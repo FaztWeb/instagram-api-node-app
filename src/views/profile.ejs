@@ -1,0 +1,36 @@
+<%- layout('layouts/main')%>
+
+<div class="row p-2">
+  <div class="col-md-3">
+    <div class="card">
+      <img src="<%= user.profile_picture %>" class="card-img-top" />
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= user.full_name %></h5>
+        <%=user.full_name%>
+        <%=user.bio %>
+        <hr/>
+        <%=user.counts.media %> <i class="fas fa-camera"></i> - 
+        <%=user.counts.follows %> <i class="fas fa-heart"></i> - 
+        <%=user.counts.followed_by %> <i class="fas fa-users"></i>
+      </div>
+      <div class="card-footer">
+        <a href="<%=user.website %>" class="btn btn-success btn-block" target="_blank">Website</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <% posts.forEach(function( post ) { %>
+      <div class="col-md-4">
+        <div class="card mb-2 animated bounceInUp">
+          <img src="<%= post.images.thumbnail.url %>" class="card-img-top"/>
+          <div class="card-body">
+              <p>Posted By <%= post.user.full_name %></p>
+              <p class="text-muted"><%= formatDate(post.created_time) %></p>
+          </div>
+        </div>
+      </div>
+      <% })%>
+    </div>
+  </div>
+</div>
